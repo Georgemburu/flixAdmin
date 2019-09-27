@@ -1,0 +1,54 @@
+.compose_search_form {
+    margin-bottom: 1rem;
+}
+.compose_searchResult_div {
+    background-color: #EBEBEB;
+    width: 30rem;
+    height: 6rem;
+    margin: 0 auto;
+    margin-bottom: .6rem;
+    display: flex;
+    /* grid-template-columns: 1fr 3fr; */
+    padding: .5rem .5rem;
+    color: black;
+    font-size: .7rem;
+}
+.compose_search_userResult {
+    margin: 0 .2rem;
+    width: 5rem;
+}
+.compose_search_user_ACTIVE  {
+    background-color: aliceblue;
+    border: 1px solid gray;
+}
+.compose_search_userImage {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+.compose_selected_title {
+    font-family: 'Carter One', cursive;  
+    text-decoration: underline;
+}
+
+.compose_selected_user_show_div {
+    margin: auto;
+    width: 30rem;
+    height: 10rem;
+    background-color: #5C645B;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    overflow-x: scroll;
+    /* scrollbar-color: #2e332d auto; */
+    scrollbar-color: rgb(37, 27, 27) #2e332d;
+
+}
+
+.compose_selected_users_listing_div {
+    display: flex;
+}

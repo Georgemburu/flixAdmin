@@ -1,0 +1,61 @@
+.Inb {
+    background-color: #EBEBEB;
+    width: 30rem;
+    height: 6rem;
+    margin: 0 auto;
+    margin-bottom: .6rem;
+    display: flex;
+    /* grid-template-columns: 1fr 3fr; */
+    padding: .5rem .5rem;
+    position: relative;
+}
+.Inb img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+.Inb_Body {
+    /* display: grid; */
+    /* grid-template-columns: 2fr 1fr; */
+    color: black;
+}
+.Inb_body_title {
+    font-family: 'Carter One', cursive;  
+
+}
+.Inb_body_view {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3rem;
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+.Inb_body_view > div {
+    /* border: 1px solid black; */
+    display: flex;
+}
+.Inb_body_view > div p {
+    /* margin: auto; */
+}
+.Inb_body_view > div .delete {
+
+}
+.Inb_body_view > div > .delete > img {
+    width: 2rem;
+    height: 2rem;
+    padding-left: .3rem;
+}
+.Inb_body_view > div .ticks {
+
+}
+.Inb_body_view > div .ticks >img{
+    width: 2rem;
+    height: 2rem;
+    padding-left: .3rem;
+    padding-top: .4rem;
+}

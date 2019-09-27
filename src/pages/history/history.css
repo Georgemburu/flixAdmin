@@ -1,0 +1,10 @@
+.History {
+    /* border: 1px solid black; */
+    margin-bottom: .5em;
+}
+.history_title {
+    text-align: left;
+    padding: 0.5rem 2.3rem;
+    text-decoration: underline;
+    font-family: 'Carter One', cursive;  
+}

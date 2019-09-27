@@ -1,0 +1,47 @@
+.Notification_div {
+    background-color: #EBEBEB;
+    width: 30rem;
+    height: 6rem;
+    margin: 0 auto;
+    margin-bottom: .6rem;
+    display: flex;
+    /* grid-template-columns: 1fr 3fr; */
+    padding: .5rem .5rem;
+}
+.Notification_div img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+.notif_Body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    color: black;
+}
+.notif_body_title {
+    font-family: 'Carter One', cursive;  
+    color: black;
+    text-decoration: underline;
+    margin-bottom: 1em;
+}
+.notif_body_others {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notif_body_total_display {
+    /* border: 1px solid black; */
+}
+.notif_body_view_button_div {
+    /* border: 1px solid black; */
+    padding-top: 3em;
+}
+.notif_body_view_button_div p {
+    color: #107134;
+    text-decoration: underline;
+}
+.notif_body_view_button_div p:hover {
+    cursor: pointer;
+    opacity: .6;
+}

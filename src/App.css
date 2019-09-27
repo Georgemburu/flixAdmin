@@ -1,0 +1,15 @@
+.App {
+  
+}
+main {
+    padding-top: 1rem;
+    width:70vw;
+    margin: 0 auto; 
+    /* border: 1px solid gray; */
+}
+
+@media screen and (max-width: 800px){
+    main {
+        width: 95vw;
+    }
+}

@@ -1,0 +1,154 @@
+.Header  {
+    background-color: #636862;
+    /* height: 3rem; */
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 0 2rem;
+}
+.Header > div {
+    /* border: 1px solid black; */
+    text-align: center;
+    display: flex;
+    margin: auto;
+}
+.brandSide .brandName {
+    font-family: 'Carter One', cursive;  
+    color: #000000;
+    font-size: 40px;  
+}
+.navSide > a{
+    color: #171717;
+    font-size: 16px;
+    font-family: 'Carter One', cursive;  
+    margin: 0 1rem;
+}
+
+.admindp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+
+.controlsDropDown {
+    color:#353735;
+    font-family: 'Carter One', cursive;  
+    justify-self: center;
+    margin: auto;
+    padding: 0 2rem;
+}
+.notification_bellIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* drop down */
+.usersControlSide {
+    position: relative;
+}
+.controlsDropDownDiv {
+    background-color: #EBEBEB;
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+    left: 5rem;
+    border-radius: 4px;
+    min-height: 7rem;
+    color: #000000;
+    font-family: 'Carter One', cursive;  
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: .5em;
+}
+.controlsDropDownDiv a {
+    cursor: pointer;
+    color: #171717;
+}
+.controlsDropDownDiv a:hover {
+    opacity: .6;
+}
+
+
+
+/*drawwer */
+.sideNavDrawer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    background-color: white;
+    color: black;
+    bottom: 0;
+    display: none;
+    transition: 1.5s;
+}
+.humbergerMenu {
+    display: none;
+    visibility: hidden;
+}
+.showDrawer {
+    display: block !important;
+    visibility: visible !important;
+    width: 20rem !important;
+    z-index: 1002;
+}
+
+.sideNavDrawer_Header {
+    height: 4rem;
+    width: 100%;
+    /* padding: .5rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    margin-top: .6em;
+}
+.drawer_closeIcon {
+    width: 2rem;
+    height: 2rem;
+    
+}
+.sideDrawer_usersControlSide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px;
+    /* flex-direction: column; */
+}
+.drawer_controlsDropDownDiv {
+    top: 6em !important;
+}
+.drawer_navSide {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: 'Carter One', cursive;  
+    margin-top: 30vh;
+    grid-gap: 1rem;
+}
+.drawer_navSide a {
+    color: black;
+    
+}
+@media screen and (max-width: 900px){
+   .navSide {
+       display: none;
+       visibility: hidden;
+   }
+   .usersControlSide {
+       display: none;
+       visibility: hidden;
+
+   }
+   .humbergerMenu {
+       display: block;
+       margin-right: 10rem;
+       /* background-color: white; */
+       visibility: visible;
+       width: 5rem;
+       height: 5rem;
+
+   }
+   .brandSide .brandName {
+    margin-top: .5rem; 
+}
+}

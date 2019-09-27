@@ -1,0 +1,30 @@
+.You_Message {
+    /* background-color: #DFDCDC; */
+    background-color: #E3E3E3;
+    width: 359px;
+    min-height: 100px;
+    display: flex;
+    margin-left: 1rem;
+    margin-bottom: .7rem;
+}
+.You_message_data_div {
+    margin: auto;
+    position: relative;
+    padding: 0 .4rem;
+
+}
+.You_message_data_div p {
+    text-align: left;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+.message_ticks {
+    position: absolute;
+    right: 0;
+
+}
+
+.chatTicksImg {
+    width: 1.5rem;
+    height: 1.5rem;
+}

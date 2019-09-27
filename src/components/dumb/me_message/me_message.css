@@ -1,0 +1,24 @@
+.Me_Message {
+    background-color: #DFDCDC;
+    width: 359px;
+    min-height: 100px;
+    display: flex;
+    margin-left: 10rem;
+    margin-bottom: .7rem;
+
+}
+.Me_message_data_div {
+    margin: auto;
+    position: relative;
+    padding: 0 .4rem;
+}
+.Me_message_data_div p {
+    text-align: left;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+.message_ticks {
+    position: absolute;
+    right: 0;
+
+}

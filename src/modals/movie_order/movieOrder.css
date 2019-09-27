@@ -1,0 +1,65 @@
+.movie_order_head_details {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    height: 6rem;
+    /* border: 1px solid black; */
+    padding: 0 .5rem;
+}
+.movie_order_head_user_details_div {
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    /* border: 1px solid black; */
+    width: 50%;
+}
+.movie_order_head_user_details_div p > span {
+    font-weight: bold;
+    margin-right: .3rem;
+}
+.movie_order_head_total_display_div {
+    justify-content: center;
+    /* border: 1px solid black; */
+    align-items: center;
+    width: 50%;
+
+}
+.movie_order_head_total_display_div p >span {
+    font-weight: bold;
+    margin-right: .3rem;
+
+}
+
+.movies_ordered_list_area {
+    /* border: 1px solid black; */
+    width: 25rem;
+    margin: 0 auto;
+    color: black;
+}
+.movies_ordered_list_area_title {
+  font-family: 'Carter One', cursive;  
+  color: black;
+  margin-bottom: .3rem;
+}
+.movies_ordered_list_div {
+    /* border: 1px solid black; */
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    height: 10rem;
+    overflow-x: scroll;
+}
+.movies_ordered_list_div p > span {
+    font-weight: bold;
+    margin-right: .3rem;
+}
+
+.movie_ordered_action_btns_area {
+    /* border: 1px solid black; */
+    width: 25rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+.movie_ordered_action_btns_area >button{
+    background-color: #414840;
+    color: #ebebeb;
+}

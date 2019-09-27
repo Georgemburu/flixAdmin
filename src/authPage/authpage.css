@@ -1,0 +1,42 @@
+.AuthPage {
+    /* border: 1px solid white; */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.authPage_form {
+    /* border: 1px solid white; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+.authPage_form > div {
+    display: grid;
+    grid-gap: .4rem;
+}
+.authPage_form > div label {
+    font-family: 'Carter One', cursive; 
+    text-decoration: underline;   
+}
+.authPage_form > div input {
+    width: 90%;
+    margin: auto;
+    border: none;
+    background: none;
+    border-bottom: 1px solid black;
+    color: rgb(230, 218, 218);
+    padding-left: .2em;
+}
+.authPage_form > div input::placeholder {
+  color: #999292;
+}
+.authpage_buttons_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: .4rem;
+}
+
+#authformErrorRevealer {
+    color: red;
+}

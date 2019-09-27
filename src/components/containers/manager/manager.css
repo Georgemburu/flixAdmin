@@ -1,0 +1,16 @@
+.Manager {
+    background-color: #414840;
+    width: 35rem;
+    min-height: 664px;
+    margin: 0 auto;
+    padding-top: .5rem;
+    /* position: relative; */
+}
+.Manage_Title {
+  font-family: 'Carter One', cursive;  
+  padding-bottom: 1rem;
+    /* margin: 1rem 0;      */
+}
+.manager_outer {
+  /* position: relative; */
+}
