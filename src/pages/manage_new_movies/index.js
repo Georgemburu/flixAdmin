@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import './manageMovies.css'
+import './manageNewMovies.css'
 
 import Manager from '../../components/containers/manager'
 import Table from '../../components/containers/table'
 
 // import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE } from '../../action.types'
-import { ADD_Movie, GET_Movies, DELETE_Movie} from '../../redux/actions';
+import { ADD_NewMovie, GET_NewMovies, DELETE_NewMovie} from '../../redux/actions';
 
-class ManageMovies extends React.Component {
+class ManageNewMovies extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -50,7 +50,7 @@ class ManageMovies extends React.Component {
 
     componentDidMount(){
         let { dispatch } = this.props;
-        GET_Movies(dispatch,null,(error,snapshot)=>{
+        GET_NewMovies(dispatch,null,(error,snapshot)=>{
             if(error){
                 console.log('error getting new movie  data')
             }else {
@@ -86,7 +86,7 @@ class ManageMovies extends React.Component {
         let empty = false;
         $arr.forEach((fld)=>{
             if(fld===''){
-                console.log('is empty',String(fld))
+                console.log('is empty',fld)
                 empty=true;
                 return
             }
@@ -103,7 +103,7 @@ class ManageMovies extends React.Component {
             }
         })
         return isValid;
-    } 
+    }
     handleAddClick = (e)=>{
         let { dispatch } = this.props;
         let { title,category, imageUrl, trailerUrl, description, casts, galaryImages   } = this.state.movieFormData;
@@ -116,44 +116,27 @@ class ManageMovies extends React.Component {
             this.errorDispElem.current.innerText = 'error: provide a valid url where needed'
 
         }else {
+            // all clear
+            this.errorDispElem.current.innerText = ''
 
-            // Check if the same movie already entered before
-            // looop over the current movies dataset check if titles match
-            let title_to_check = title
-            let { movies } = this.state;
-            
-            movies.forEach((movie__)=>{
-                let movie_title_sm = movie__.title.toLowerCase()
-                if(movie_title_sm.includes(title_to_check.toLowerCase())){
-                    alert('Title same as ',JSON.stringify(movie_title_sm))
-                    return
-                }else{
-                    // all clear
+            console.log('clicked add',this.state.movieFormData)
+        
+        
+            ADD_NewMovie(dispatch,this.state.movieFormData,(error,result)=>{
+                if(error){
+                    console.log('error saving movie',error)
+                    this.errorDispElem.current.innerText = 'Error saving movie'
 
-                    this.errorDispElem.current.innerText = ''
+                }else {
+                    console.log('successfully saved movie',result)
+                    this.errorDispElem.current.innerText = 'Saved Movie Successfully'
+                    setTimeout(()=>{
+                        this.errorDispElem.current.innerText = ''
 
-                    console.log('clicked add',this.state.movieFormData)
-                
-                
-                    ADD_Movie(dispatch,this.state.movieFormData,(error,result)=>{
-                        if(error){
-                            console.log('error saving movie',error)
-                            this.errorDispElem.current.innerText = 'Error saving movie'
+                    },1000)
 
-                        }else {
-                            console.log('successfully saved movie',result)
-                            this.errorDispElem.current.innerText = 'Saved Movie Successfully'
-                            setTimeout(()=>{
-                                this.errorDispElem.current.innerText = ''
-
-                            },1000)
-
-                        }
-                    })
                 }
             })
-
-            
 
         }
         
@@ -162,7 +145,7 @@ class ManageMovies extends React.Component {
     handleMovieDelete = ($id)=>{
         console.log('delete',$id)
         let { dispatch } = this.props;
-        DELETE_Movie(dispatch,$id,(error,result)=>{
+        DELETE_NewMovie(dispatch,$id,(error,result)=>{
             if(error){
                 console.log('error deleting movie category,id',error)
             }else {
@@ -177,7 +160,7 @@ class ManageMovies extends React.Component {
         let { MoviesCategoriesArr } = this.props;
 
         return (
-            <Manager TITLE="Manage Movies ">
+            <Manager TITLE="Manage New Movies ">
                 <div className="ManageHomeSliderForm">
                     <p className="localInputErrorDisp" ref={this.errorDispElem}></p>
 
@@ -229,9 +212,9 @@ class ManageMovies extends React.Component {
 
 function mapStateToProps(state){
     console.log(state)
-    let { moviesReducer,movies_and_SeriesCategoriesReducer } = state;
+    let { newMoviesReducer,movies_and_SeriesCategoriesReducer } = state;
     return {
-        movies: moviesReducer.movies,
+        movies: newMoviesReducer.movies,
         MoviesCategoriesArr:  movies_and_SeriesCategoriesReducer.MoviesCategoriesArr,
     }
 }
@@ -242,4 +225,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ManageMovies);
+export default connect(mapStateToProps,mapDispatchToProps)(ManageNewMovies);

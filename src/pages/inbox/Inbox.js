@@ -2,6 +2,16 @@ import React, { Fragment } from 'react'
 
 import './inbox.css'
 
+// actions
+import { GET_Chats } from '../../redux/actions';
+
+// store
+import { connect } from 'react-redux';
+import { GET_CHATS, } from '../../action.types';
+// firebase
+import firebase from '../../config/firebase';
+// utils func
+import toDateTime from '../../utils/toDateTime';
 
 import Manager from '../../components/containers/manager'
 import Inb from '../../components/dumb/inb'
@@ -9,6 +19,8 @@ import MessageView from '../../modals/message_view/MessageView'
 
 
 // import Table from '../../components/containers/table'
+const messagesCollectionDoc = 'chatWithAdmin'; //then doc with user id //then
+const messagesSubCollectionDoc = 'WITH_ADMIN';//then doc with auto gen id with do details 
 
 class Inbox extends React.Component {
     state = {
@@ -89,6 +101,99 @@ class Inbox extends React.Component {
         }
     }
 
+    componentDidMount(){
+        console.log('MOunting Inbox page')
+        let { dispatch } = this.props;
+        GET_Chats(dispatch)
+        // this._unsubsribe = firebase.firestore().collection(messagesCollectionDoc).onSnapshot((querySnapshot)=>{
+        //     let messagesArr  = []
+        //     querySnapshot.forEach(function(doc) {
+        //         console.log(doc.id, " => ", doc.data());
+        //         let masterObj = {}
+        //         let docObj = {};
+        //         let data = doc.data();
+    
+        //         docObj.id = doc.id;
+        //         docObj = {...docObj,...data}
+        //         docObj.timeStamp = toDateTime(data.timeStamp.seconds).toUTCString();
+                
+                
+        //         if(messagesArr[docObj.timeStamp ]===undefined){
+        //             messagesArr[docObj.timeStamp ]=[]
+        //         }
+        //         masterObj[docObj.timeStamp ].push(docObj)
+        //         messagesArr.push(masterObj);
+    
+        //       });
+        //     //   dispatch
+        //     dispatch({
+        //         type: GET_CHATS,
+        //         payload: {
+        //             messages: [...messagesArr],
+        //             error: {
+        //                 type: null,
+        //                 message: null
+        //             }
+        //         }
+        //     })
+        //  })
+        //  .catch((error)=>{
+        //      console.log('ERROR querying messages',error)
+        //      dispatch({
+        //         type: GET_CHATS,
+        //         payload:{
+        //             messages: [],
+        //             error: {
+        //                 type: 'error getting messages',
+        //                 message: 'Error getting messages from server'
+        //             }
+        //         }
+        //      })
+        //  })
+        // GET_Chats()
+    }
+
+    formatHistoryData = ($data)=>{
+        // orderByDATE
+        let newDataArr = [];
+        /**
+         * obj format
+         * {
+         *  Today: ['data obj'],
+         * 
+         * }
+         * 
+         * Year Month Day Time>
+         */
+        let newDataObj = {};
+        let keys = []
+        $data.forEach((dt,index)=>{
+            // let time = dt.id;
+            // console.log('DTT',dt)
+            // console.log('DTT Messages',dt['from'],Object.keys(dt))
+            // console.log('DTT setTime',dt.sentTime)
+            // setTimeout(()=>{
+                let time = dt.sentTime&&dt.sentTime!=null?dt.sentTime:null
+                // console.log('TIMME',time)
+                let dateTime = String(time)
+                console.log(dateTime,time)
+                if(keys.includes(dateTime)===false){
+                    keys.push(dateTime);
+                }
+                if(newDataObj[dateTime]===undefined){
+                    newDataObj[dateTime] = []
+                }
+                newDataObj[dateTime] = [dt]
+            // },1000)
+            
+            
+        })
+        return {
+            DatakeysArr: keys,
+            newCorrectedData: newDataObj
+        }
+    }
+
     handleShowingConversationModal = ($show_bool)=>{
         if($show_bool===true){
             this.setState({
@@ -97,16 +202,68 @@ class Inbox extends React.Component {
             })
         }
     }
+    // handleMessagesDisplay = (messages)=>{
+    //     let dates = Object.keys(messages)
+    //     return (
+    //         <Fragment>
+    //             { dates.map((date, index)=>{
+    //                 return(
+    //                     <div className="History" key={"history_"+index}>
+    //                         <div className="history_title canClick hoverFade"> { date } </div>
+    //                         <div className="history_data">
+    //                             <Inb DATA={messages[date]} SHOW_CONVERSATION_MANAGER_MODAL={this.handleShowingConversationModal}/>
+    //                         </div>
+    //                     </div>
+    //                 )
+    //             })}
+    //         </Fragment>
+    //     )
+    // }
     handleMessagesDisplay = (messages)=>{
-        let dates = Object.keys(messages)
+        // let dates = Object.keys(messages)
+        console.log('MESSAGES',messages)
         return (
             <Fragment>
-                { dates.map((date, index)=>{
+                { messages.map((msg, index)=>{
                     return(
-                        <div className="History" key={"history_"+index}>
-                            <div className="history_title canClick hoverFade"> { date } </div>
+                        <div className="History" key={"history_"+msg.from.id}>
+                            <div className="history_title canClick hoverFade"> { msg.sentTime } </div>
                             <div className="history_data">
-                                <Inb DATA={messages[date]} SHOW_CONVERSATION_MANAGER_MODAL={this.handleShowingConversationModal}/>
+                                {/* <Inb DATA={msg} messagess={msg.messages} SHOW_CONVERSATION_MANAGER_MODAL={this.handleShowingConversationModal}/> */}
+
+
+                                <div className="Inb" key={'inb'+'index'}>
+                        {/* <img src={inbData.from.imagePath } alt="user_image"/> */}
+                        <div className="Inb_Body">
+                            <div className="Inb_body_title">
+                                {msg.from.name}
+                            </div>
+                            <div className="Inb_body_content canClick hoverFade" >
+                            {/* Hello I need a movie when am out from work. HOpe you will be availb */}
+                            {msg.messages[msg.messages.length-1].text}
+                            </div>
+                            <div className="Inb_body_view">
+                                <div>
+                                    <p className="delete">
+                                        <img src="delete/delete.png" className="canClick hoverFade" alt="delete"/>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className="ticks">
+                                        <img src="ticks/blue_ticks.png" alt="tick"/>
+                                    
+                                     {/* <i class="fas fa-check">cxc</i> */}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+    
+
+
                             </div>
                         </div>
                     )
@@ -120,8 +277,26 @@ class Inbox extends React.Component {
             show_conversation_modal: false
         })
     }
+
+    componentWillUnmount(){
+        // unsubscribe to firebase realtime listener
+        if(this._unsubsribe){
+            this._unsubsribe()
+
+        }
+    }
     render(){
-        let  { messages, show_conversation_modal } = this.state
+        let  { show_conversation_modal } = this.state
+        let { messages } = this.props;
+        let DatakeysArr = [];
+        let newCorrectedData = {};
+        if(messages.length>0){
+            let returnedData= this.formatHistoryData(messages);
+            console.log('RETURNED',returnedData)
+            DatakeysArr = returnedData.DatakeysArr;
+            newCorrectedData = returnedData.newCorrectedData;
+        }
+        console.log('newCorrectedData',newCorrectedData)
         return (
             <Fragment>
                < MessageView SHOW={show_conversation_modal} CLOSEMODAL_FUNC_PROP={this.CLOSEMODAL_FUNC}/>
@@ -134,5 +309,16 @@ class Inbox extends React.Component {
     }
 }
 
+function mapStateToProps(state){
+    console.log('INBOX pAGE mapping state to props', state )
+    return {
+        messages: state.chatsReducer.messages,
+    }
+}
+function mapDispatchToProps(dispatch){
+    return {
+        dispatch: dispatch
+    }
+}
 
-export default Inbox;
+export default connect(mapStateToProps,mapDispatchToProps)(Inbox);

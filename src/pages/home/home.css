@@ -76,16 +76,53 @@
 .home_categoriesHeader {
     font-family: 'Carter One', cursive;  
     margin-bottom: .5rem;
+    width: 100%;
+    margin-top:3rem;
 }
 .home_categoriesList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
-    width: 35rem;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem; */
+    /* width: 35rem; */
+    width: 100%;
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 .movieCategoryImage {
     width:230px;
     height: 190px;
+}
+
+.flexAlignCenter {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+/* new movies display */
+.newMoviesDisplayDiv {
+    background-color: transparent;
+    height: 6rem;
+    overflow: hidden;
+}
+.newMoviesDisplayDiv> ul {
+    list-style: none;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x:scroll;
+    padding: 0;
+}
+.newMoviesDisplayDiv> ul>li {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+    padding: 0;
+
+}
+.newMoviesDisplayDiv> ul>li > img{
+    width: 6rem;
+    height: 6rem;
 }

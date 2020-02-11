@@ -8,10 +8,11 @@ const MOVIES_DOCNAME  = 'movies'
 
 export function ADD_Movie($dispatch,$payload,cb=null){
     // save
-    let { title,category, imageUrl, trailerUrl, description, casts   } = $payload;
+    let { title,category, imageUrl, trailerUrl, description, casts, galaryImages, type  } = $payload;
+    
 
     firebase_Store.collection(MOVIES_DOCNAME).add({
-        title,category, imageUrl, trailerUrl, description, casts 
+        title,category, imageUrl, trailerUrl, description, casts, galaryImages, type
     }).then((response)=>{
         cb('',response)
         $dispatch({

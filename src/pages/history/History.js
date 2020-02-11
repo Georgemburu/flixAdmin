@@ -96,7 +96,39 @@ class History extends React.Component {
             ]
         }
     }
-
+    // formatHistoryData = ($data)=>{
+    //     // orderByDATE
+    //     let newDataArr = [];
+    //     /**
+    //      * obj format
+    //      * {
+    //      *  Today: ['data obj'],
+    //      * 
+    //      * }
+    //      * 
+    //      * Year Month Day Time>
+    //      */
+    //     let newDataObj = {};
+    //     let keys = []
+    //     $data.forEach((dt)=>{
+    //         let time = dt.id;
+           
+    //         let dateTime = String(time)
+    //         console.log(dateTime,time)
+    //         if(keys.includes(dateTime)===false){
+    //             keys.push(dateTime);
+    //         }
+    //         if(newDataObj[dateTime]===undefined){
+    //             newDataObj[dateTime] = []
+    //         }
+    //         newDataObj[dateTime] = [...dt.orders]
+            
+    //     })
+    //     return {
+    //         DatakeysArr: keys,
+    //         newCorrectedData: newDataObj
+    //     }
+    // }
     handleShowingConversationModal = ($show_bool)=>{
         console.log('clicked for history datashow')
         if($show_bool===true){

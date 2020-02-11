@@ -67,6 +67,8 @@ function Header (props){
                     <div className="navSide">
                         <Link to="/okHome" className={isActive('/okHome')}>Home</Link>
                         <Link to="/ManageMovies" className={isActive('/ManageMovies')}>Manage Movies</Link>
+                        <Link to="/ManageSeries" className={isActive('/ManageSeries')}>Manage Series</Link>
+                        <Link to="/ManageNewMovies" className={isActive('/ManageNewMovies')}>Manage New Movies</Link>
                         <Link to="/ManageUsers" className={isActive('/ManageUsers')}>Manage Users</Link>
 
                     </div>
@@ -114,6 +116,8 @@ function Header (props){
                 <div className="drawer_navSide">
                     <Link to="/okHome" className={isActive('/okHome')}>Home</Link>
                     <Link to="/ManageMovies" className={isActive('/ManageMovies')}>Manage Movies</Link>
+                    <Link to="/ManageSeries" className={isActive('/ManageSeries')}>Manage Series</Link>
+                    <Link to="/ManageNewMovies" className={isActive('/ManageNewMovies')}>Manage New Movies</Link>                    
                     <Link to="/ManageUsers" className={isActive('/ManageUsers')}>Manage Users</Link>
 
                 </div>

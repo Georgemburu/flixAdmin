@@ -54,26 +54,26 @@ class Home extends React.Component {
         })
         // end of home slider
    
-            GET_Movie_Categories(dispatch,null,(error,snapshot)=>{
-                if(error){
-                    console.log('error getting new movie category data')
-                }else {
-                    console.log('movie category snapshots',snapshot)
-                    let newMovieCategoriesData = []
-                    snapshot.forEach((doc)=>{
-                        console.log(doc.id,doc.data())
-                        let dt = {...doc.data()};
-                        dt.id = doc.id;
-                        dt.imagePath = dt.imageUrl;
-                        newMovieCategoriesData.push(dt)
-                    })
+            // GET_Movie_Categories(dispatch,null,(error,snapshot)=>{
+            //     if(error){
+            //         console.log('error getting new movie category data')
+            //     }else {
+            //         console.log('movie category snapshots',snapshot)
+            //         let newMovieCategoriesData = []
+            //         snapshot.forEach((doc)=>{
+            //             console.log(doc.id,doc.data())
+            //             let dt = {...doc.data()};
+            //             dt.id = doc.id;
+            //             dt.imagePath = dt.imageUrl;
+            //             newMovieCategoriesData.push(dt)
+            //         })
     
-                    this.setState({
-                        ...this.state,
-                        movieCategories: [...newMovieCategoriesData]
-                    })
-                }
-            })
+            //         this.setState({
+            //             ...this.state,
+            //             movieCategories: [...newMovieCategoriesData]
+            //         })
+            //     }
+            // })
         
     }
 
@@ -111,13 +111,62 @@ class Home extends React.Component {
         )
     }
     displayMovieCategories =()=>{
-        let {movieCategories} = this.state;
+        // let {movieCategories} = this.state;
+        console.log('HOME PAGE props',this.props)
+        let { MoviesCategoriesArr } = this.props;
 
         return(
             <Fragment>
-                 {movieCategories.map((category,index)=>{
+                 {MoviesCategoriesArr.map((category,index)=>{
                     return (
-                        <img src={category.imagePath} alt="category" key={category.id} data_key={category.id} className="movieCategoryImage canClick hoverFade"/>                        
+                        // <img src={category.imagePath} alt="category" key={category.id} data_key={category.id} className="movieCategoryImage canClick hoverFade"/>
+                        <div style={{
+                            height: '10rem',
+                            borderRadius: 4,
+                            width: '10rem',
+                            border: '1px solid gray',
+                            display: 'grid',
+                            gridTemplateColumns:'1fr',
+                            backgroundColor: index%2===0?'rgba(160,32,76,.5)':'#23103A'
+                        }}>
+                            <div className='flexAlignCenter'>
+                                <img src={category.icon}/>
+                            </div>
+                            <div className='flexAlignCenter'>
+                                <p>{category.title}</p>
+                            </div>
+                        </div>                         
+                    )
+                })
+                }
+            </Fragment>
+        )
+    }
+    displaySeriesCategories = ()=>{
+        console.log('HOME PAGE props',this.props)
+        let { seriesCategoriesArr } = this.props;
+
+        return(
+            <Fragment>
+                 {seriesCategoriesArr.map((category,index)=>{
+                    return (
+                        // <img src={category.imagePath} alt="category" key={category.id} data_key={category.id} className="movieCategoryImage canClick hoverFade"/>
+                        <div style={{
+                            height: '10rem',
+                            width: '10rem',
+                            borderRadius: 4,
+                            border: '1px solid gray',
+                            display: 'grid',
+                            gridTemplateColumns:'1fr',
+                            backgroundColor: 'rgba(89, 112, 108,.5)'
+                        }}>
+                            <div className='flexAlignCenter'>
+                                <img src={category.icon}/>
+                            </div>
+                            <div className='flexAlignCenter'>
+                                <p>{category.title}</p>
+                            </div>
+                        </div>                        
                     )
                 })
                 }
@@ -133,17 +182,80 @@ class Home extends React.Component {
                     </ul>
                   
                 </div>
-                <div className="postersCountDiv">
+                {/* <div className="postersCountDiv">
                         {this.displayPostersCount()}
                 </div>
                 <div className="homeControlsDiv">
                     <Link to="ManageHomeSlider" className="hoverFade">Manage Home Image Slider</Link>
                     <Link to="ManageMovieCategories" className="hoverFade">Manage Movie Categories</Link>
+                </div> */}
+                <div className="newMoviesDiv">
+                    <div className="home_categoriesHeader">New Movies</div>
+                    <div className="newMoviesDisplayDiv">
+                        <ul>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                            <li>
+                                <img src="https://www.cinemasguzzo.com/DATA/FILM/5239~v~maleficent-mistress-of-evil.jpg"/>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="home_categoriesDiv">
-                    <div className="home_categoriesHeader">Categories</div>
+                    <div className="home_categoriesHeader">Movies Categories</div>
                     <div className="home_categoriesList">
                         {this.displayMovieCategories()}
+                    </div>
+                </div>
+
+
+                <div className="home_categoriesDiv">
+                    <div className="home_categoriesHeader">Series Categories</div>
+                    <div className="home_categoriesList">
+                        {this.displaySeriesCategories()}
                     </div>
                 </div>
             </Fragment>
@@ -153,10 +265,12 @@ class Home extends React.Component {
 
 function mapStateToProps(state){
     console.log('1>HERE',state)
-    let { homeSliderReducer } = state;
+    let { homeSliderReducer, movies_and_SeriesCategoriesReducer } = state;
     let posters = homeSliderReducer.posters!==undefined?homeSliderReducer.posters: homeSliderReducer.homeSliderImages;
     return {
-        posters: posters
+        posters: posters,
+        seriesCategoriesArr: movies_and_SeriesCategoriesReducer.SeriesCategoriesArr,
+        MoviesCategoriesArr:  movies_and_SeriesCategoriesReducer.MoviesCategoriesArr,
     }
 }
 

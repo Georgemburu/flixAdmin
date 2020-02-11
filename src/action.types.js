@@ -14,5 +14,23 @@ export const DELETE_MOVIE_CATEGORY = 'DELETE_MOVIE_CATEGORY'
 
 // MOVIES
 export const GET_MOVIES = 'GET_MOVIES'
-export const ADD_MOVIE = 'ADD_MOVE'
-export const DELETE_MOVIE = 'DELETE_MOVIE'
+export const ADD_MOVIE = 'ADD_MOVIE'
+export const DELETE_MOVIE = 'DELETE_MOVIE';
+
+// NEW MOVIES
+export const GET_NEW_MOVIES = 'GET_NEW_MOVIES';
+export const ADD_NEW_MOVIE = 'ADD_NEW_MOVIE';
+export const DELETE_NEW_MOVIE = 'DELETE_NEW_MOVIE';
+
+// SERIES
+export const GET_SERIES = 'GET_SERIES';
+export const ADD_SERIES = 'ADD_SERIES';
+export const DELETE_SERIES = 'DELETE_SERIES';
+
+// CHATS
+export const GET_CHATS = 'GET_CHATS';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const DELETE_MESSAGE = 'DELETE_MESSAGE';
+export const DELETE_FULL_CHAT = 'DELETE_FULL_CHAT';
+
+

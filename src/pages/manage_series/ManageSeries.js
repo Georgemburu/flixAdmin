@@ -1,19 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import './manageMovies.css'
+import './manageSeries.css'
 
 import Manager from '../../components/containers/manager'
 import Table from '../../components/containers/table'
 
-// import { ADD_MOVIE, GET_MOVIES, DELETE_MOVIE } from '../../action.types'
-import { ADD_Movie, GET_Movies, DELETE_Movie} from '../../redux/actions';
+// import { ADD_MOVIE, GET_series, DELETE_MOVIE } from '../../action.types'
+import { ADD_Series, GET_Series, DELETE_Series} from '../../redux/actions/seriesActions';
 
-class ManageMovies extends React.Component {
+class ManageSeries extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            movieFormData: {
+            seriesFormData: {
                 title: '',
                 category: '',
                 imageUrl: '',
@@ -21,9 +21,12 @@ class ManageMovies extends React.Component {
                 description:'',
                 casts: '',
                 galaryImages: '',
-                type: 'movie'
+                type: 'series',
+                season: '',
+                episodes: '',
+                releaseYear: ''
             },
-            movies : [
+            series : [
                 {
                     imagePath: 'moviePoster/1.jpeg',
                     title: 'title'
@@ -50,23 +53,23 @@ class ManageMovies extends React.Component {
 
     componentDidMount(){
         let { dispatch } = this.props;
-        GET_Movies(dispatch,null,(error,snapshot)=>{
+        GET_Series(dispatch,null,(error,snapshot)=>{
             if(error){
                 console.log('error getting new movie  data')
             }else {
                 console.log('movie category snapshots',snapshot)
-                let newMoviesData = []
+                let newseriesData = []
                 snapshot.forEach((doc)=>{
                     console.log(doc.id,doc.data())
                     let dt = {...doc.data()};
                     dt.id = doc.id;
                     dt.imagePath = dt.imageUrl;
-                    newMoviesData.push(dt)
+                    newseriesData.push(dt)
                 })
 
                 this.setState({
                     ...this.state,
-                    movies: [...newMoviesData]
+                    series: [...newseriesData]
                 })
             }
         })
@@ -76,8 +79,8 @@ class ManageMovies extends React.Component {
         let target = e.currentTarget;
         this.setState({
             ...this.state,
-            movieFormData: {
-                ...this.state.movieFormData,
+            seriesFormData: {
+                ...this.state.seriesFormData,
                 [target.name]: target.value
             }
         })
@@ -86,7 +89,7 @@ class ManageMovies extends React.Component {
         let empty = false;
         $arr.forEach((fld)=>{
             if(fld===''){
-                console.log('is empty',String(fld))
+                console.log('is empty',fld)
                 empty=true;
                 return
             }
@@ -103,11 +106,11 @@ class ManageMovies extends React.Component {
             }
         })
         return isValid;
-    } 
+    }
     handleAddClick = (e)=>{
         let { dispatch } = this.props;
-        let { title,category, imageUrl, trailerUrl, description, casts, galaryImages   } = this.state.movieFormData;
-        let flds_tocheck_for_empty = [title,category,imageUrl,trailerUrl,description, galaryImages]
+        let { title,category, imageUrl, trailerUrl, description, casts, galaryImages, season, episodes, releaseYear   } = this.state.seriesFormData;
+        let flds_tocheck_for_empty = [title,category,imageUrl,trailerUrl,description, galaryImages, season, episodes, releaseYear]
         if(this.checkIfEmpty(flds_tocheck_for_empty)===true){
             // empty found
             this.errorDispElem.current.innerText = 'error: field cannot be empty'
@@ -116,26 +119,24 @@ class ManageMovies extends React.Component {
             this.errorDispElem.current.innerText = 'error: provide a valid url where needed'
 
         }else {
-
-            // Check if the same movie already entered before
-            // looop over the current movies dataset check if titles match
+             // Check if the same series already entered before
+            // looop over the current series dataset check if titles match
             let title_to_check = title
-            let { movies } = this.state;
+            let { series } = this.state;
             
-            movies.forEach((movie__)=>{
+            series.forEach((movie__)=>{
                 let movie_title_sm = movie__.title.toLowerCase()
                 if(movie_title_sm.includes(title_to_check.toLowerCase())){
                     alert('Title same as ',JSON.stringify(movie_title_sm))
                     return
-                }else{
-                    // all clear
-
+                }else {
+                     // all clear
                     this.errorDispElem.current.innerText = ''
 
-                    console.log('clicked add',this.state.movieFormData)
+                    console.log('clicked add',this.state.seriesFormData)
                 
                 
-                    ADD_Movie(dispatch,this.state.movieFormData,(error,result)=>{
+                    ADD_Series(dispatch,this.state.seriesFormData,(error,result)=>{
                         if(error){
                             console.log('error saving movie',error)
                             this.errorDispElem.current.innerText = 'Error saving movie'
@@ -153,7 +154,8 @@ class ManageMovies extends React.Component {
                 }
             })
 
-            
+
+           
 
         }
         
@@ -162,7 +164,7 @@ class ManageMovies extends React.Component {
     handleMovieDelete = ($id)=>{
         console.log('delete',$id)
         let { dispatch } = this.props;
-        DELETE_Movie(dispatch,$id,(error,result)=>{
+        DELETE_Series(dispatch,$id,(error,result)=>{
             if(error){
                 console.log('error deleting movie category,id',error)
             }else {
@@ -172,12 +174,12 @@ class ManageMovies extends React.Component {
 
     }
     render(){
-         let { movies } = this.state;
-        let { title,category, imageUrl, trailerUrl, description, casts , galaryImages, type  } = this.state;
-        let { MoviesCategoriesArr } = this.props;
+         let { series } = this.state;
+        let { title,category, imageUrl, trailerUrl, description, casts , galaryImages, type, episodes, season, releaseYear  } = this.state;
+        let { seriesCategoriesArr } = this.props;
 
         return (
-            <Manager TITLE="Manage Movies ">
+            <Manager TITLE="Manage series ">
                 <div className="ManageHomeSliderForm">
                     <p className="localInputErrorDisp" ref={this.errorDispElem}></p>
 
@@ -187,7 +189,7 @@ class ManageMovies extends React.Component {
                     {/* <input type="text" placeholder="Type Category" name="category" value={category} onChange={this.handleInputChange}/> */}
                     <span>Category:</span>
                     <select value={category} name="category" onChange={this.handleInputChange}>
-                        {MoviesCategoriesArr.map((category)=>{
+                        {seriesCategoriesArr.map((category)=>{
                             return(
                                 <option value={category.title}>{category.title}</option>
                             )
@@ -202,6 +204,15 @@ class ManageMovies extends React.Component {
                     </select>
                     <br/>
                     <br/> */}
+                    <input type="text" placeholder="Type Season" name="season" value={season} onChange={this.handleInputChange}/>
+                    <br/>
+                    <br/>
+                    <input type="text" placeholder="Type episodes" name="episodes" value={episodes} onChange={this.handleInputChange}/>
+                    <br/>
+                    <br/>
+                    <input type="text" placeholder="Type releaseYear" name="releaseYear" value={releaseYear} onChange={this.handleInputChange}/>
+                    <br/>
+                    <br/>
                     <input type="text" placeholder="Type Image url" name="imageUrl" value={imageUrl} onChange={this.handleInputChange}/>
                     <br/>
                     <br/>
@@ -219,7 +230,7 @@ class ManageMovies extends React.Component {
                     <br/>
                     <button onClick={(e)=>this.handleAddClick(e)}>Add</button>
                 </div>
-                <Table DATA={movies} DELETE_FUNCTION={this.handleMovieDelete}/>
+                <Table DATA={series} DELETE_FUNCTION={this.handleMovieDelete}/>
 
                 
             </Manager>    
@@ -229,10 +240,10 @@ class ManageMovies extends React.Component {
 
 function mapStateToProps(state){
     console.log(state)
-    let { moviesReducer,movies_and_SeriesCategoriesReducer } = state;
+    let { seriesReducer,movies_and_SeriesCategoriesReducer } = state;
     return {
-        movies: moviesReducer.movies,
-        MoviesCategoriesArr:  movies_and_SeriesCategoriesReducer.MoviesCategoriesArr,
+        series: seriesReducer.series,
+        seriesCategoriesArr:  movies_and_SeriesCategoriesReducer.SeriesCategoriesArr,
     }
 }
 
@@ -242,4 +253,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ManageMovies);
+export default connect(mapStateToProps,mapDispatchToProps)(ManageSeries);

@@ -11,6 +11,8 @@ import Notifications from '../pages/notifications/Notifications'
 import Inbox from '../pages/inbox/Inbox'
 import History from '../pages/history/History'
 import Compose from '../pages/compose/Compose'
+import ManageSeries from '../pages/manage_series/ManageSeries';
+import ManageNewMovies from '../pages/manage_new_movies/index';
 
 import NotFound from '../pages/not_found/NotFound'
 
@@ -25,6 +27,8 @@ const Routes = ()=>{
             <Route  path="/ManageHomeSlider" component={ManageHomeSlider} />
             <Route  path="/ManageMovieCategories" component={ManageMovieCategories} />
             <Route  path="/ManageMovies" component={ManageMovies} />
+            <Route path="/ManageNewMovies" component={ManageNewMovies} />
+            <Route path="/ManageSeries" component={ManageSeries} />
             <Route  path="/ManageUsers" component={ManageUsers} />
             <Route  path="/Notifications" component={Notifications} />
             <Route  path="/Inbox" component={Inbox} />

@@ -92,7 +92,9 @@ class AuthPage extends React.Component {
             LoginAdmin(dispatch,payload,(err,user)=>{
                 if(err){
                     console.log('error',err)
-                    this.authformErrorRevealer.current.innerText = 'invalid email or password'
+                    if(this.authformErrorRevealer.current && this.authformErrorRevealer.current!==undefined){
+                        this.authformErrorRevealer.current.innerText = 'invalid email or password'
+                    }
                 }else {
                     console.log('succ user',user)
                     this.authformErrorRevealer.current.innerText = 'successfull login'

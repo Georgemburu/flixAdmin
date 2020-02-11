@@ -12,7 +12,7 @@ import RootReducer from './redux/reducers'
 import { BrowserRouter} from 'react-router-dom'
 //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 function getDev(){
-    return window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    return window.__REDUX_DEVTOOLS_EXTENSION__ ?window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__():null
 }
 const store = createStore(RootReducer,compose(applyMiddleware(logger,thunk),getDev()))
 ReactDOM.render(<BrowserRouter>

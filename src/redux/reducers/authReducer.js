@@ -2,7 +2,7 @@ import { ADMIN_SIGNUP, ADMIN_LOGIN} from '../../action.types'
 
 
 let initialState = {
-    isLoggedIn: false
+    isLoggedIn: true
 }
 
 
