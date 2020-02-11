@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/flixAdmin/static/css/main.7d4cac5e.chunk.css",
-    "main.js": "/flixAdmin/static/js/main.9b4bf936.chunk.js",
-    "main.js.map": "/flixAdmin/static/js/main.9b4bf936.chunk.js.map",
+    "main.js": "/flixAdmin/static/js/main.2b211ddb.chunk.js",
+    "main.js.map": "/flixAdmin/static/js/main.2b211ddb.chunk.js.map",
     "runtime-main.js": "/flixAdmin/static/js/runtime-main.5a5b5d77.js",
     "runtime-main.js.map": "/flixAdmin/static/js/runtime-main.5a5b5d77.js.map",
-    "static/js/2.9b9d43a5.chunk.js": "/flixAdmin/static/js/2.9b9d43a5.chunk.js",
-    "static/js/2.9b9d43a5.chunk.js.map": "/flixAdmin/static/js/2.9b9d43a5.chunk.js.map",
+    "static/js/2.37c313ac.chunk.js": "/flixAdmin/static/js/2.37c313ac.chunk.js",
+    "static/js/2.37c313ac.chunk.js.map": "/flixAdmin/static/js/2.37c313ac.chunk.js.map",
     "index.html": "/flixAdmin/index.html",
-    "precache-manifest.56628a8a351c3361c68435ef606faeb0.js": "/flixAdmin/precache-manifest.56628a8a351c3361c68435ef606faeb0.js",
+    "precache-manifest.f35f13ca7c99b831fe05e458a0e8722b.js": "/flixAdmin/precache-manifest.f35f13ca7c99b831fe05e458a0e8722b.js",
     "service-worker.js": "/flixAdmin/service-worker.js",
     "static/css/main.7d4cac5e.chunk.css.map": "/flixAdmin/static/css/main.7d4cac5e.chunk.css.map"
   }
