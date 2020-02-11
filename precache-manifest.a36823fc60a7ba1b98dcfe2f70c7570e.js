@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "27b7d46914194b4420693ae30b6b9fdd",
+    "revision": "abaebd596764c21e7e23d2e9cf039b8f",
     "url": "/flixAdmin/index.html"
   },
   {
-    "revision": "134de8b9375638b5c7bf",
+    "revision": "28b575c68a12f6c981f2",
     "url": "/flixAdmin/static/css/main.7d4cac5e.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flixAdmin/static/js/2.37c313ac.chunk.js"
   },
   {
-    "revision": "134de8b9375638b5c7bf",
-    "url": "/flixAdmin/static/js/main.2b211ddb.chunk.js"
+    "revision": "28b575c68a12f6c981f2",
+    "url": "/flixAdmin/static/js/main.1a19f618.chunk.js"
   },
   {
     "revision": "30d82aa0532690d60576",
